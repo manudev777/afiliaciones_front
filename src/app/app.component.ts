@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { LoginService } from './services/login.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AuthGuard } from './auth/auth.guard';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   `,
   providers:[
     LoginService,
+    AuthGuard,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ]
 })
@@ -22,18 +24,8 @@ export class AppComponent implements OnInit {
   constructor(private login:LoginService,private router:Router){}
 
   ngOnInit() {
-    this.login.validateToken().subscribe((isValid:boolean) => {
-          if (isValid) {
-              console.log('Token es válido');
-          } else {
-              console.error('Token es inválido o ha expirado');
-              this.router.navigate(['/login']); 
-          }
-      },
-      (error) => {
-          console.error('Error al validar el token', error);
-          this.router.navigate(['/login']); 
-      }
-  );
+    if (!this.login.validateToken()) {
+      this.router.navigate(['/login']);
+    }
   }
 }
