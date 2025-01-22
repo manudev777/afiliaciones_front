@@ -6,7 +6,6 @@ import { RegisterService } from '../../services/register.service';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { environment } from '../../../environment/environment';
-import { HttpClientModule } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Register } from '../../model/register';
 import { Router } from '@angular/router';
@@ -39,7 +38,6 @@ export function domainValidator(): ValidatorFn {
     ReactiveFormsModule,
     ErrorComponent,
     NavbarComponent,
-    HttpClientModule,
     RecaptchaModule,
     RecaptchaFormsModule
   ],

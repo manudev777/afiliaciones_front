@@ -4,9 +4,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { NavbarComponent } from "../../shared/navbar/navbar.component";
 import { ErrorComponent } from "../../shared/error/error.component";
 import Swal from 'sweetalert2';
-import { HttpClientModule } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { LoginService } from "../../services/login.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
     selector: 'app-login',
@@ -16,11 +15,10 @@ import { LoginService } from "../../services/login.service";
         ReactiveFormsModule,
         NavbarComponent,
         ErrorComponent,
-        HttpClientModule,
         ReactiveFormsModule
     ],
     standalone:true,
-    providers:[LoginService]
+    providers:[AuthService]
 })
 export class LoginComponent implements OnInit{
 
@@ -28,7 +26,7 @@ export class LoginComponent implements OnInit{
     title:string = 'Ingresa tu solicitud';
 
     constructor(
-        private loginService:LoginService,
+        private auth:AuthService,
         private router: Router
     ){
         this.formLogin = new FormGroup({
@@ -50,7 +48,7 @@ export class LoginComponent implements OnInit{
                 },
             });    
 
-            this.loginService.validateUser(this.formLogin.value).subscribe({
+            this.auth.validateUser(this.formLogin.value).subscribe({
                 next: (data) => {
                     Swal.close(); 
                     Swal.fire({
