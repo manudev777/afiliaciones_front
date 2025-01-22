@@ -1,31 +1,27 @@
 <lb-navbar [title]="'Globalkast'"></lb-navbar>
 
-<div class="container col-lg-4 col-md-12 col-sm-12 col-xs-12  mx-auto mt-4">
+<div class="container col-auto col-lg-4 mx-auto mt-4 border p-4 rounded shadow">
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <div class="row row-cols-1 g-2">
       <div class="col text-center">
         <h4>{{title}}</h4>
       </div>
       
-      <!-- Nombre -->
       <div class="col">
         <input type="text" class="form-control" formControlName="name" placeholder="Nombres" />
         <lb-error [control]="registrationForm.get('name')" [fieldName]="'Nombre'"></lb-error>
       </div>
       
-      <!-- Apellido Paterno -->
       <div class="col">
         <input type="text" class="form-control" formControlName="lastname" placeholder="Apellido paterno" />
         <lb-error [control]="registrationForm.get('lastname')" [fieldName]="'Apellido Paterno'"></lb-error>
       </div>
       
-      <!-- Apellido Materno -->
       <div class="col">
         <input type="text" class="form-control" formControlName="lastnameSecond" placeholder="Apellido materno" />
         <lb-error [control]="registrationForm.get('lastnameSecond')" [fieldName]="'Apellido Materno'"></lb-error>
       </div>
       
-      <!-- Correo -->
       <div class="col" formGroupName="email">
           <div class="d-flex flex-block">
             <input
@@ -60,13 +56,11 @@
         <lb-error [control]="registrationForm.get('email.otherDomain')" [fieldName]="'Escriba el dominio'"></lb-error>
       </div>
 
-      <!-- Teléfono -->
       <div class="col">
         <input type="text" class="form-control" formControlName="phone" placeholder="Teléfono" />
         <lb-error [control]="registrationForm.get('phone')" [fieldName]="'Teléfono'"></lb-error>
       </div>
 
-      <!-- RUC -->
       <div class="col">
         <select class="form-select" formControlName="ruc" placeholder="¿Cuenta con RUC?">
           <option *ngFor="let option of rucOptions" [value]="option.value">{{ option.label }}</option>
@@ -74,7 +68,6 @@
         <lb-error [control]="registrationForm.get('ruc')" [fieldName]="'RUC'"></lb-error>
       </div>
 
-      <!-- Departamento -->
       <div class="col">
         <select class="form-select" formControlName="department" placeholder="Departamento">
           <option value="" disabled>Departamento</option>
@@ -83,7 +76,6 @@
         <lb-error [control]="registrationForm.get('department')" [fieldName]="'Departamento'"></lb-error>
       </div>
 
-      <!-- Provincia -->
       <div class="col">
         <select class="form-select" formControlName="province" placeholder="Provincia">
           <option value="" disabled>Provincia</option>
@@ -92,7 +84,6 @@
         <lb-error [control]="registrationForm.get('province')" [fieldName]="'Provincia'"></lb-error>
       </div>
 
-      <!-- Distrito -->
       <div class="col">
         <select class="form-select" formControlName="district" placeholder="Distrito">
           <option value="" disabled>Distrito</option>
@@ -101,12 +92,10 @@
         <lb-error [control]="registrationForm.get('district')" [fieldName]="'Distrito'"></lb-error>
       </div>
 
-      <!-- Captcha -->
       <div class="col text-center">
         <re-captcha class="d-inline-block" (resolved)="captchaResult($event)" [siteKey]="captchaSiteKey"></re-captcha>
       </div>
 
-      <!-- Botón de envío -->
       <div class="col text-center">
         <button type="submit" class="btn btn-secondary w-100" [disabled]="registrationForm.invalid || !captchaValido">
           <i class="fas fa-user-plus"></i> Registrarse
