@@ -20,12 +20,23 @@
       </div>
     </div>
   
-    <div class="mt-4">
+    <div class="mt-2">
         <label>Información del Agente registrada en SUNAT</label>
 
         <!-- va a ir la tabla-->
+        <table class="table table-bordered">
+           
+        </table>
+
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            La dirección mostrada corresponde a la dirección actual de mi LOCAL COMERCIAL.
+          </label>
+        </div>
     </div>
-    <div class="mt-4">
+    <div class="mt-2">
         <label>Dirección del comercio</label>
 
         <div class="row row-cols-lg-5 row-cols-1 mt-2 g-2">
@@ -71,8 +82,89 @@
         </div>
     </div>
 
-    <div class="mt-4 border p-4 rounded">
-        <label class="small">De contar con un <strong>AFILIADOR</strong> ingrese su DNI, de lo contrario dejar este dato en blanco.</label>
+    <div class="mt-2 border p-4 rounded">
+      <div class="row row-cols-lg-2 row-cols-1">
+        <div class="col d-flex gap-2 align-items-center mt-2">
+          <div class="col col-lg-4">
+            <label for="razonSocial" >Razón social</label>
+          </div>
+          <div class="col col-lg-8">
+            <input name="razonSocial" type="text" placeholder="Indicar" class="form-control" />
+          </div>
+        </div>
+        <div class="col d-flex gap-2 align-items-center mt-2">
+          <div class="col col-lg-4">
+            <label for="denominacionComercial" >Denominación comercial</label>
+          </div>
+          <div class="col col-lg-8">
+            <input name="denominacionComercial" type="text" placeholder="Indicar" class="form-control"/>
+          </div>
+        </div>
+        <div class="col d-flex gap-2 align-items-center mt-2">
+          <div class="col col-lg-4">
+            <label for="cuii" >CUII</label>
+          </div>
+          <div class="col col-lg-8">
+            <select name="cuii" class="form-control">
+              <option value="">Seleccione</option>
+            </select>
+          </div>
+        </div>
+        <div class="col d-flex gap-2 align-items-center mt-2">
+          <div class="col col-lg-4">
+            <label for="añosExp" >Años de experiencia en Mdo</label>
+          </div>
+          <div class="col col-lg-8">
+            <input name="añosExp" type="text" placeholder="Indicar" class="form-control"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-2">
+        <label>Regimen tributario</label>
+  
+        <div class="row row-cols-lg-2 row-cols-1 mt-3 g-2">
+          <div class="col">
+            <input type="radio" id="regGeneral" class="form-check-input me-2" value="regGeneral" />
+            <label class="form-check-label" for="regGeneral">Régimen general (RG)</label>
+          </div>
+          <div class="col">
+            <input type="radio" id="regUnico" class="form-check-input me-2" value="regUnico" />
+            <label class="form-check-label" for="regUnico">Régimen único simplificado (RUS)</label>
+          </div>
+          <div class="col">
+            <input type="radio" id="regEspecial" class="form-check-input me-2" value="regEspecial" />
+            <label class="form-check-label" for="regEspecial">Régimen especial de renta (RER)</label>
+          </div>
+          <div class="col">
+            <input type="radio" id="regMype" class="form-check-input me-2" value="regMype" />
+            <label class="form-check-label" for="regMype">Régimen Mype Tributario (RMT)</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-cols-lg-2 row-cols-1 mt-2">
+        <div class="col d-flex gap-2 align-items-center mt-2">
+          <div class="col col-lg-2">
+            <label for="cargo">Cargo</label>
+          </div>
+          <div class="col col-lg-10">
+            <input type="text" class="form-control" name="cargo" placeholder="Ingresar un cargo" />
+          </div>
+        </div>
+        <div class="col d-flex gap-2 align-items-center mt-2">
+          <div class="col col-lg-3">
+            <label for="poderes">Poderes inscritos</label>
+          </div>
+          <div class="col col-lg-9">
+            <input type="text" class="form-control" name="poderes" placeholder="Ingresar poderes inscritos"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-2 border p-4 rounded">
+        <label class="small">* De contar con un <strong>AFILIADOR</strong> ingrese su DNI, de lo contrario dejar este dato en blanco.</label>
         
         <div class="form-group mt-2">
             <label class="small" for="afiliador">Ejecutivo Comercial (Afiliador)</label>
@@ -80,7 +172,7 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-end mt-4">
+    <div class="d-flex justify-content-end mt-2">
         <button type="submit" class="btn btn-secondary me-2"> 
           <i class="fa-solid fa-floppy-disk"></i> 
           Guardar Información</button>
@@ -88,43 +180,5 @@
           <i class="fa-regular fa-paper-plane"></i>
         </button>
     </div>
-    <!--
-    <div class="form-check mb-3">
-      <input type="checkbox" id="direccionComercial" class="form-check-input" formControlName="direccionComercial" />
-      <label class="form-check-label" for="direccionComercial">
-        La dirección mostrada corresponde a la dirección actual de mi LOCAL COMERCIAL.
-      </label>
-    </div>
-  
-    <div class="row g-3 mb-3">
-      <div class="col-md-6">
-        <label for="tipoVia" class="form-label">Tipo de Vía</label>
-        <select id="tipoVia" class="form-select" formControlName="tipoVia">
-          <option value="calle">Calle</option>
-          <option value="avenida">Avenida</option>
-        </select>
-      </div>
-      <div class="col-md-6">
-        <label for="nombreVia" class="form-label">Nombre de la Vía</label>
-        <input type="text" id="nombreVia" class="form-control" formControlName="nombreVia" />
-      </div>
-    </div>
-  
-    <h5 class="mb-3">Régimen Tributario</h5>
-    <div class="mb-3">
-      <div class="form-check">
-        <input type="radio" id="regimenRG" class="form-check-input" formControlName="regimen" value="rg" />
-        <label class="form-check-label" for="regimenRG">Régimen General (RG)</label>
-      </div>
-      <div class="form-check">
-        <input type="radio" id="regimenRUS" class="form-check-input" formControlName="regimen" value="rus" />
-        <label class="form-check-label" for="regimenRUS">Régimen Único Simplificado (RUS)</label>
-      </div>
-    </div>
-    --->
-
-    <!--
-   
-    -->
 </form>
   
